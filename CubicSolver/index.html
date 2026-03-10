@@ -8,21 +8,61 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="input-container">
     <h1>Cubic Solver</h1>
-    <div class="inputs">
-      <label for="a">a value:</label>
-      <input type="number" id="a" placeholder="a value" required />
-      <label for="b">b value:</label>
-      <input type="number" id="b" placeholder="b value" required />
-      <label for="c">c value:</label>
-      <input type="number" id="c" placeholder="c value" required />
-      <label for="d">d value:</label>
-      <input type="number" id="d" placeholder="d value" required />
-      <button id="Solver">Solve Cubic</button>
-    </div>
+    <form id="cubicsolver">
+      <div class="inputs">
+        <label for="a">a value:</label>
+        <input type="number" id="a" name="a" placeholder="a value" required />
+        <label for="b">b value:</label>
+        <input type="number" id="b" name="b" placeholder="b value" required />
+        <label for="c">c value:</label>
+        <input type="number" id="c" name="c" placeholder="c value" required />
+        <label for="d">d value:</label>
+        <input type="number" id="d" name="d" placeholder="d value" required />
+        <button type="submit">Solve Cubic</button>
+      </div>
   </div>
+  <div class="results-table">
+    <table>
+      <tr>
+        <td>p</td>
+        <td id="p">0</td>
+      </tr>
+      <tr>
+        <td>q</td>
+        <td id="q">0</td>
+      </tr>
+      <tr>
+        <td>Discriminant</td>
+        <td id="discriminant">0</td>
+      </tr>
+      <tr>
+        <th>Value</th>
+        <th>x</th>
+        <th>y</th>
+      </tr>
+      <tr>
+        <td>Root 1</td>
+        <td id="root1">0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Root 2</td>
+        <td id="root2">0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Root 3</td>
+        <td id="root3">0</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </div>
+  </form>
 
+  <div id="rootsOutput"></div>
+  </div>
 
 
 
