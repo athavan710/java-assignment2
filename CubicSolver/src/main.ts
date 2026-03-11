@@ -20,7 +20,7 @@ form?.addEventListener("submit", (event) => {
   let root2: number | string;
   let root3: number | string;
 
-  if (discriminant < 0) { //3 real
+  if (discriminant < 0) { //3 real 
     const k = 2 * Math.sqrt(-p / 3);
     const theta = Math.acos((-q / 2) / Math.sqrt((-p / 3) ** 3));
     const y1 = k * Math.cos(theta / 3);
@@ -89,9 +89,7 @@ form?.addEventListener("submit", (event) => {
   }
 
   // number = rounds, string = complex 
-
   // typeof specifices
-
   const canvas = document.getElementById("graph") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
 
@@ -101,11 +99,10 @@ form?.addEventListener("submit", (event) => {
     const centerX = w / 2;
     const centerY = h / 2;
     const scale = 30;
-
-
     ctx.strokeStyle = "#e2e8f0";
     ctx.lineWidth = 1;
     ctx.beginPath();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = -10; i <= 10; i++) {
       // Vertical Grid Lines
@@ -171,5 +168,4 @@ form?.addEventListener("submit", (event) => {
   };
   console.log(root1, root2, root3);
   console.log(a, b, c, d);
-
 });
