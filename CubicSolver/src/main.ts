@@ -105,11 +105,8 @@ form?.addEventListener("submit", (event) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = -10; i <= 10; i++) {
-      // Vertical Grid Lines
       ctx.moveTo(centerX + i * scale, 0);
       ctx.lineTo(centerX + i * scale, h);
-
-      // Horizontal Grid Lines
       ctx.moveTo(0, centerY + i * scale);
       ctx.lineTo(w, centerY + i * scale);
     }
