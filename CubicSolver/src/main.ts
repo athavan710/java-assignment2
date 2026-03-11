@@ -83,6 +83,11 @@ form?.addEventListener("submit", (event) => {
     (document.getElementById("root3") as HTMLElement).textContent = `${root3}`;
   };
 
+  const display = document.getElementById("showequation");
+  if (display) {
+    display.innerHTML = `Equation: ${a}x³ + ${b}x² + ${c}x + ${d}`;
+  }
+
   // number = rounds, string = complex 
 
   // typeof specifices
