@@ -85,17 +85,90 @@ form?.addEventListener("submit", (event) => {
 
   const display = document.getElementById("showequation");
   if (display) {
-    display.innerHTML = `Equation: ${a}x³ + ${b}x² + ${c}x + ${d}`;
+    display.innerHTML = `Equation: ${a}x³ + ${b}x² + ${c}x + ${d}`; // note for me innerhtml helps read the exponents and display them properly
   }
 
   // number = rounds, string = complex 
 
   // typeof specifices
 
+  const canvas = document.getElementById("graph") as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d");
+
+  if (ctx) {
+    const w = canvas.width;
+    const h = canvas.height;
+    const centerX = w / 2;
+    const centerY = h / 2;
+    const scale = 30;
 
 
+    ctx.strokeStyle = "#e2e8f0";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
 
+    for (let i = -10; i <= 10; i++) {
+      // Vertical Grid Lines
+      ctx.moveTo(centerX + i * scale, 0);
+      ctx.lineTo(centerX + i * scale, h);
 
+      // Horizontal Grid Lines
+      ctx.moveTo(0, centerY + i * scale);
+      ctx.lineTo(w, centerY + i * scale);
+    }
+    ctx.stroke();
+
+    ctx.beginPath(); // this will draw x-axis
+    ctx.moveTo(0, centerY);
+    ctx.lineTo(w, centerY);
+    ctx.moveTo(centerX, 0);
+    ctx.lineTo(centerX, h);
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.beginPath(); // this will draw y-axis
+    ctx.moveTo(centerX, 0);
+    ctx.lineTo(centerX, h);
+    ctx.stroke();
+
+    const drawCubic = (a: number, b: number, c: number, d: number) => {
+      ctx.beginPath();
+      ctx.strokeStyle = "red";
+
+      for (let x = -10; x <= 10; x += 0.1) {
+        const y = a * x ** 3 + b * x ** 2 + c * x + d;
+        const canvasX = centerX + x * scale;
+        const canvasY = centerY - y * scale; // puts graph coordinates to canvas
+
+        if (x === -10) {
+          ctx.moveTo(canvasX, canvasY);
+        } else {
+          ctx.lineTo(canvasX, canvasY);
+        };
+      };
+      ctx.stroke();
+    };
+    drawCubic(a, b, c, d);
+    if (typeof root1 === "number") {
+      ctx.beginPath();
+      ctx.fillStyle = "blue";
+      ctx.arc(centerX + root1 * scale, centerY, 4, 0, Math.PI * 2);
+      ctx.fill();
+    };
+    if (typeof root2 === "number") {
+      ctx.beginPath();
+      ctx.fillStyle = "blue";
+      ctx.arc(centerX + root2 * scale, centerY, 4, 0, Math.PI * 2);
+      ctx.fill();
+    };
+    if (typeof root3 === "number") {
+      ctx.beginPath();
+      ctx.fillStyle = "blue";
+      ctx.arc(centerX + root3 * scale, centerY, 4, 0, Math.PI * 2);
+      ctx.fill();
+    };
+  };
   console.log(root1, root2, root3);
   console.log(a, b, c, d);
 
